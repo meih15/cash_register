@@ -86,9 +86,26 @@ function sumDrawer(drawer) {
 // Level 4: canMakeAmount
 
 function canMakeAmount(target, drawer) {
-  // Write your code here
+    let drawerCopy = [...drawer].reverse();
 
+    function checkAmountRecursively(target, drawerIdx) {
+        if (target === 0) return true;
+        if (target < 0 || drawerIdx === drawerCopy.length) return false;
 
+        let currentRow = drawerCopy[drawerIdx];
+
+        for (let i = 0; i <= currentRow.quantity; i++) {
+            let amountToSubtract = i * currentRow.value;
+
+            if (amountToSubtract <= target && checkAmountRecursively(target - amountToSubtract, drawerIdx + 1)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    return checkAmountRecursively(target, 0);
 }
 
 // Level 5: transaction
