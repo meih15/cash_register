@@ -148,12 +148,12 @@ function transaction(cost, paid, drawer) {
 }
 
 // DO NOT EDIT CODE BELOW
-// module.exports = {
-//   removeItem,
-//   addItem,
-//   countCoins,
-//   countNotes,
-//   sumDrawer,
-//   canMakeAmount,
-//   transaction
-// }
+module.exports = {
+  removeItem,
+  addItem,
+  countCoins,
+  countNotes,
+  sumDrawer,
+  canMakeAmount,
+  transaction
+}
