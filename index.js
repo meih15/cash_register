@@ -111,10 +111,40 @@ function canMakeAmount(target, drawer) {
 // Level 5: transaction
 
 function transaction(cost, paid, drawer) {
-  // Write your code here
+    // Function to calculate the change
+    function calculateChange(cost, paid) {
+        let change = paid - cost;
+        const changeCoins = [];
+        let index = drawer.length - 1; // Start from the largest denomination
 
+        while (change > 0 && index >= 0) {
+            const coin = drawer[index];
+            if (coin.quantity > 0 && coin.value <= change) {
+                const numCoins = Math.min(Math.floor(change / coin.value), coin.quantity);
+                changeCoins.push({ name: coin.name, value: coin.value, quantity: numCoins });
+                change -= numCoins * coin.value;
+            }
+            index--;
+        }
+        return changeCoins;
+    }
 
+    // Update the drawer by adding paid amount and removing change
+    function updateDrawer(drawer, changeCoins, paid) {
+        // Add the paid amount to the drawer
+        drawer.find(coin => coin.value === paid).quantity += 1;
 
+        // Remove the change from the drawer
+        for (const changeCoin of changeCoins) {
+            const drawerCoin = drawer.find(coin => coin.value === changeCoin.value);
+            drawerCoin.quantity -= changeCoin.quantity;
+        }
+
+        return drawer;
+    }
+
+    const changeCoins = calculateChange(cost, paid);
+    return updateDrawer(drawer, changeCoins, paid);
 }
 
 // DO NOT EDIT CODE BELOW
