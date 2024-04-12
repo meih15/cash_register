@@ -33,10 +33,20 @@ function removeItem(name, drawer) {
 
 // Level 2: countCoins and countNotes
 function countCoins(drawer) {
-  // Write your code here
-
-
-}
+    // Write your code here
+  
+    let count = 0;
+  
+    for (let item of drawer) {
+        if (item.value < 100) {
+            count += item.quantity
+        }
+    }
+  
+    return count;
+  
+  
+  }
 
 function countNotes(drawer) {
   // Write your code here
