@@ -3,11 +3,19 @@ const drawer = require('./drawer')
 
 // Level 1: removeItem and addItem
 
+
 function removeItem(name, drawer) {
-  // Write your code here
-
-
-}
+    // Write your code here
+  
+      for (let item of drawer) {
+          if (item.name === name) {
+              item.quantity--
+          }
+      }
+  
+      return drawer
+  
+  }
 
 
 function addItem(name, drawer) {
