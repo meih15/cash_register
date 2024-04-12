@@ -66,11 +66,22 @@ function countCoins(drawer) {
 
 // Level 3: sumDrawer
 
+
 function sumDrawer(drawer) {
-  // Write your code here
-
-
-}
+    // Write your code here
+    let sum = 0;
+  
+    for (let item of drawer) {
+        let totalValue = (item.quantity * item.value) / 100;
+        sum += totalValue
+    }
+  
+  
+    let result = sum.toFixed(2);
+  
+      return "$" + result;
+  
+  }
 
 // Level 4: canMakeAmount
 
