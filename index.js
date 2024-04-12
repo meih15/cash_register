@@ -18,10 +18,18 @@ function removeItem(name, drawer) {
   }
 
 
-function addItem(name, drawer) {
-  // Write your code here
-
-}
+  function addItem(name, drawer) {
+    // Write your code here
+  
+      for (let item of drawer) {
+          if (item.name === name) {
+              item.quantity++
+          }
+      }
+  
+      return drawer
+  
+  }
 
 // Level 2: countCoins and countNotes
 function countCoins(drawer) {
